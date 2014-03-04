@@ -1,4 +1,5 @@
-Life2
-=====
+Life2.0
+=======
+Official webpage: http://www.life2project.eu/
 
-Code of Life 2.0 platform - http://www.life2project.eu/
+Repository of Life 2.0 platform code distributed under license GNUv2.
