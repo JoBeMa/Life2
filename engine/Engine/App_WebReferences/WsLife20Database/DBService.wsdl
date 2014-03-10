@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://Life_2_0_DB/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://Life_2_0_DB/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Life_2_0_DB/">
+      <s:element name="dbRegisterUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Role" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Home_area_lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Home_area_lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notification_level" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dbRegisterUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dbRegisterUserResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dbUpdateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Role" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Picture" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Home_area_lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Home_area_lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_timestamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notification_level" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Promoter_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User_average_mark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User_votes" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dbUpdateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dbUpdateUserResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dbUserLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Role" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Picture" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Home_area_lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Home_area_lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_timestamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notification_level" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Promoter_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User_average_mark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User_votes" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dbUserLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dbUserLoginResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Role" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Picture" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Home_area_lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Home_area_lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_timestamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notification_level" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Promoter_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User_average_mark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User_votes" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dbDeleteUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dbDeleteUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dbDeleteUserResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dbReadUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Role" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Picture" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Home_area_lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Home_area_lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_timestamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notification_level" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Promoter_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User_average_mark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User_votes" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dbReadUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dbReadUserResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Role" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Picture" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Home_area_lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Home_area_lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_timestamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Last_location_lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notification_level" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Promoter_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User_average_mark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User_votes" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ret_UserList" type="tns:ArrayOfUserProfile" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserProfile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserProfile" type="tns:UserProfile" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserProfile">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="User_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Role" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Picture" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Home_area_lat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Home_area_lon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Last_location_timestamp" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Last_location_lat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Last_location_lon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notification_level" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Promoter_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_average_mark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_votes" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getUserListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getUserListResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ret_UserList" type="tns:ArrayOfUserProfile" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadPicture">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Picture" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadPictureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadPictureResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="dbRegisterUserSoapIn">
+    <wsdl:part name="parameters" element="tns:dbRegisterUser" />
+  </wsdl:message>
+  <wsdl:message name="dbRegisterUserSoapOut">
+    <wsdl:part name="parameters" element="tns:dbRegisterUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="dbUpdateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:dbUpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="dbUpdateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:dbUpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="dbUserLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:dbUserLogin" />
+  </wsdl:message>
+  <wsdl:message name="dbUserLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:dbUserLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="dbDeleteUserSoapIn">
+    <wsdl:part name="parameters" element="tns:dbDeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="dbDeleteUserSoapOut">
+    <wsdl:part name="parameters" element="tns:dbDeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="dbReadUserSoapIn">
+    <wsdl:part name="parameters" element="tns:dbReadUser" />
+  </wsdl:message>
+  <wsdl:message name="dbReadUserSoapOut">
+    <wsdl:part name="parameters" element="tns:dbReadUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserListSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserList" />
+  </wsdl:message>
+  <wsdl:message name="getUserListSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserListResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadPictureSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadPicture" />
+  </wsdl:message>
+  <wsdl:message name="UploadPictureSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadPictureResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DBServiceSoap">
+    <wsdl:operation name="dbRegisterUser">
+      <wsdl:input message="tns:dbRegisterUserSoapIn" />
+      <wsdl:output message="tns:dbRegisterUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="dbUpdateUser">
+      <wsdl:input message="tns:dbUpdateUserSoapIn" />
+      <wsdl:output message="tns:dbUpdateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="dbUserLogin">
+      <wsdl:input message="tns:dbUserLoginSoapIn" />
+      <wsdl:output message="tns:dbUserLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="dbDeleteUser">
+      <wsdl:input message="tns:dbDeleteUserSoapIn" />
+      <wsdl:output message="tns:dbDeleteUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="dbReadUser">
+      <wsdl:input message="tns:dbReadUserSoapIn" />
+      <wsdl:output message="tns:dbReadUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserList">
+      <wsdl:input message="tns:getUserListSoapIn" />
+      <wsdl:output message="tns:getUserListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadPicture">
+      <wsdl:input message="tns:UploadPictureSoapIn" />
+      <wsdl:output message="tns:UploadPictureSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DBServiceSoap" type="tns:DBServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="dbRegisterUser">
+      <soap:operation soapAction="http://Life_2_0_DB/dbRegisterUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dbUpdateUser">
+      <soap:operation soapAction="http://Life_2_0_DB/dbUpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dbUserLogin">
+      <soap:operation soapAction="http://Life_2_0_DB/dbUserLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dbDeleteUser">
+      <soap:operation soapAction="http://Life_2_0_DB/dbDeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dbReadUser">
+      <soap:operation soapAction="http://Life_2_0_DB/dbReadUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserList">
+      <soap:operation soapAction="http://Life_2_0_DB/getUserList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadPicture">
+      <soap:operation soapAction="http://Life_2_0_DB/UploadPicture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DBServiceSoap12" type="tns:DBServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="dbRegisterUser">
+      <soap12:operation soapAction="http://Life_2_0_DB/dbRegisterUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dbUpdateUser">
+      <soap12:operation soapAction="http://Life_2_0_DB/dbUpdateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dbUserLogin">
+      <soap12:operation soapAction="http://Life_2_0_DB/dbUserLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dbDeleteUser">
+      <soap12:operation soapAction="http://Life_2_0_DB/dbDeleteUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dbReadUser">
+      <soap12:operation soapAction="http://Life_2_0_DB/dbReadUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserList">
+      <soap12:operation soapAction="http://Life_2_0_DB/getUserList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadPicture">
+      <soap12:operation soapAction="http://Life_2_0_DB/UploadPicture" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DBService">
+    <wsdl:port name="DBServiceSoap" binding="tns:DBServiceSoap">
+      <soap:address location="http://localhost:1043/Database/DBService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DBServiceSoap12" binding="tns:DBServiceSoap12">
+      <soap12:address location="http://localhost:1043/Database/DBService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

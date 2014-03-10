@@ -1,0 +1,15 @@
+LIFE20: Tilbud oprettet eller opdateret
+
+Brugernavn: {#UserName#}
+
+Bruger indent: {#UserId#}
+
+Tilbuds ident: {#IdItem#}
+
+Tilbud: {#ShortDesc#}
+
+Beskrivelse: {#LongDesc#}
+
+--
+Denne besked er automatisk genereret af LIFE20. 
+Hvis du mener beskeden er sendt forkert, kontakt venligst dine LIFE20 administratorer

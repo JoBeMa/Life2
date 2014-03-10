@@ -1,0 +1,4042 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://Life_2_0_Engine/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://Life_2_0_Engine/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Life_2_0_Engine/">
+      <s:element name="SubmitOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="request_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Short_desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Detailed_info" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="When_Offer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Where_Offer" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Deadline" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SubmitOfferResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Offer" type="tns:ArrayOfOffer" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOffer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Offer" type="tns:Offer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Offer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Offer_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Offer_type" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Promoter_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Short_Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detailed_info" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="When_offer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Where_offer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deadline" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Offer_average_mark" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Offer_votes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Request_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Candidates" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubmissionDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PromoterName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetOfferResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Offer" type="tns:ArrayOfOffer" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Request_Type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Short_description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="When_request" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Where" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Filtering_preferences" type="tns:FilteringPrefs" />
+            <s:element minOccurs="0" maxOccurs="1" name="Deadline" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Candidates" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FilteringPrefs">
+        <s:restriction base="s:string">
+          <s:enumeration value="male_female" />
+          <s:enumeration value="closest" />
+          <s:enumeration value="best" />
+          <s:enumeration value="recommended" />
+          <s:enumeration value="my_contacts" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SubmitRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SubmitRequestResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Request_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Request_Type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Short_description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="When_request" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Where" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Filtering_preferences" type="tns:FilteringPrefs" />
+            <s:element minOccurs="0" maxOccurs="1" name="Deadline" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Candidates" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sStatus" type="tns:Status" />
+            <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Status">
+        <s:restriction base="s:string">
+          <s:enumeration value="SError" />
+          <s:enumeration value="Submitted" />
+          <s:enumeration value="Pending" />
+          <s:enumeration value="Pending_Approval" />
+          <s:enumeration value="Accepted" />
+          <s:enumeration value="Closed" />
+          <s:enumeration value="Rejected" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="UpdateRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateRequestResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Request_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteRequestResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplyForRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Request_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplyForRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ApplyForRequestResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnApplyForRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Request_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnApplyForRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UnApplyForRequestResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRequestStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Request_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRequestStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetRequestStatusResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRequests">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Requests" type="tns:ArrayOfRequest" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Request" type="tns:Request" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Request">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Request_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Requester_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Request_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Short_description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="When_request" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Where_request" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Filtering_preferences" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deadline" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Candidates" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubmissionDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PromoterName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRequestsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetRequestsResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Requests" type="tns:ArrayOfRequest" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRegions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Regions" type="tns:ArrayOfRegions" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRegions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Regions" type="tns:Regions" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Regions">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lon" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="radius" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRegionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetRegionsResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Regions" type="tns:ArrayOfRegions" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecommendations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Recs" type="tns:ArrayOfRecommendations" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRecommendations">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Recommendations" type="tns:Recommendations" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Recommendations">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="recid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Offer_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Request_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RecList" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRecommendationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetRecommendationsResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Recs" type="tns:ArrayOfRecommendations" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JoinActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Offer_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JoinActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JoinActivityResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnJoinActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Offer_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnJoinActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UnJoinActivityResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModerateJoinActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Offer_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Requested_id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Moderation" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModerateJoinActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ModerateJoinActivityResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendFeedback">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Offer_id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="feedback" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendFeedbackResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendFeedbackResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendRecommendation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Offer_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Request_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Reclist" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendRecommendationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendRecommendationResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PromoterFeedback">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User_id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="feedback" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PromoterFeedbackResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PromoterFeedbackResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AcceptRejectRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Request_id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AcceptReject" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AcceptRejectRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AcceptRejectRequestResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSkill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Skill" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSkillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddSkillResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddInterest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Interest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddInterestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddInterestResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJoins">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_joins" type="tns:ArrayOfJoin" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfJoin">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Join" type="tns:Join" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Join">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Join_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="User_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetJoinsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetJoinsResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_joins" type="tns:ArrayOfJoin" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSkills">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_skills" type="tns:ArrayOfSkill" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSkill">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Skill" type="tns:Skill" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Skill">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="skill_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="skill_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="promoter_id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSkillsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSkillsResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_skills" type="tns:ArrayOfSkill" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInterests">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_interest" type="tns:ArrayOfInterest" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInterest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Interest" type="tns:Interest" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Interest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="interest_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="interest_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="user_id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInterestsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetInterestsResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_interest" type="tns:ArrayOfInterest" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_messages" type="tns:ArrayOfMessages" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMessages">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Messages" type="tns:Messages" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Messages">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Origin" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Destination" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MRead" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateSent" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateRead" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="MReplied" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idOffer" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idReq" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetMessagesResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_messages" type="tns:ArrayOfMessages" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MRead" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MReplied" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateMessageResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSkill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Skill_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Skill" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSkillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateSkillResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateInterest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Interest_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Interest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateInterestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateInterestResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSkill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Skill_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSkillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteSkillResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteMessageResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteInterest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Interest_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteInterestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteInterestResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddCategoryResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddActCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddActCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddActCategoryResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCompCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCompCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddCompCategoryResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRegion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="radius" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRegionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddRegionResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddHub">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="User_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Area" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Category" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddHubResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddHubResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBusiness">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="User_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Area" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Category" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBusinessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddBusinessResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHub">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_hub" type="tns:ArrayOfHub" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfHub">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Hub" type="tns:Hub" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Hub">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Hub_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="User_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Area" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hub_average_mark" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hub_votes" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Category" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetHubResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetHubResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_hub" type="tns:ArrayOfHub" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBusiness">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_business" type="tns:ArrayOfBusiness" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBusiness">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Business" type="tns:Business" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Business">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SB_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="User_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Area" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SB_average_mark" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="SB_votes" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Category" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetBusinessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetBusinessResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_business" type="tns:ArrayOfBusiness" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_categories" type="tns:ArrayOfCategory" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Category" type="tns:Category" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Category">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="category_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="category_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="category_desc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCategoriesResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_categories" type="tns:ArrayOfCategory" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_categories" type="tns:ArrayOfCategory" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetActCategoriesResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_categories" type="tns:ArrayOfCategory" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_categories" type="tns:ArrayOfCategory" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCompCategoriesResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_categories" type="tns:ArrayOfCategory" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_desc" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateCategoryResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateActCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_desc" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateActCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateActCategoryResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCompCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_desc" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCompCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateCompCategoryResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRegion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="radius" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRegionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateRegionResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRegion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRegionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteRegionResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteCategoryResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteActCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteActCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteActCategoryResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCompCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCompCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteCompCategoryResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRecommendation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Rec_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRecommendationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteRecommendationResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Short_desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Detailed_info" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="When_Activity" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Where_Activity" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Deadline" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrgName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DateOfActivity" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Price" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Subscription" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxParticipants" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddActivityResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMpOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Short_desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Detailed_info" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="When_MpOffer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Where_MpOffer" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Deadline" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrgName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DateOfOffer" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url_booking" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url_web" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url_brochure" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Price" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Subscription" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxParticipants" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMpOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddMpOfferResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActivities">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Activities" type="tns:ArrayOfActivity" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfActivity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Activity" type="tns:Activity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Activity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Promoter_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Short_Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detailed_info" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="When_c" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Where_c" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deadline" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Average_mark" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Votes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Candidates" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrgName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateOfActivity" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Price" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Subscription" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxParticipants" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubmissionDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetActivitiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetActivitiesResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Activities" type="tns:ArrayOfActivity" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMpOffers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_mpOffers" type="tns:ArrayOfMpOffer" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMpOffer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MpOffer" type="tns:MpOffer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MpOffer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Promoter_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Short_Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detailed_info" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="When_c" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Where_c" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deadline" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Average_mark" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Votes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Candidates" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrgName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateOfActivity" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="url_booking" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="url_web" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="url_brochure" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Price" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Subscription" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxParticipants" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubmissionDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Views" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMpOffersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetMpOffersResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_mpOffers" type="tns:ArrayOfMpOffer" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateHub">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hub_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="User_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Area" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Hub_average_mark" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hub_votes" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Category" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateHubResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateHubResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBusiness">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SB_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="User_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Area" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="SB_average_mark" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SB_votes" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Category" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBusinessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateBusinessResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Activity_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Short_desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Detailed_info" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="When_Activity" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Where_Activity" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Deadline" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrgName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DateOfActivity" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Price" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Subscription" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxParticipants" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateActivityResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMpOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Offer_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Short_desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Detailed_info" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="When_Offer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Where_Offer" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Deadline" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrgName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DateOfOffer" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url_booking" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url_web" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url_brochure" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Price" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Subscription" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxParticipants" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMpOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateMpOfferResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="viewOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Offer_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="viewOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="viewOfferResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Offer_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Short_desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Detailed_info" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="When_Offer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Where_Offer" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Deadline" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateOfferResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteHub">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hub_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteHubResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteHubResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBusiness">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SB_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBusinessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteBusinessResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Activity_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteActivityResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Short_desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Detailed_info" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="When_Service" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Where_Service" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Deadline" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddServiceResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServices">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Services" type="tns:ArrayOfService" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfService">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Service" type="tns:Service" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Service">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Promoter_id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Short_Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detailed_info" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="When_c" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Where_c" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deadline" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Average_mark" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Votes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Candidates" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubmissionDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetServicesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetServicesResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Services" type="tns:ArrayOfService" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Service_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Short_desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Detailed_info" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="When_Service" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Where_Service" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Deadline" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ContactType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateServiceResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Service_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteServiceResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserOffers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="User_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserOffersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteUserOffersResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Offer_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteOfferResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplyForOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Offer_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplyForOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ApplyForOfferResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnApplyForOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Offer_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnApplyForOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UnApplyForOfferResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AcceptRejectNewCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="User_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Category_id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AcceptReject" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AcceptRejectNewCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AcceptRejectNewCategoryResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddStat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Event_id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Duration" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location_lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location_lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Device" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Query" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddStatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddStatResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStats">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Stats" type="tns:ArrayOfStats" />
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStats">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Stats" type="tns:Stats" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Stats">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Event_Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_Login" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dTime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Duration" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Device" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Query" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lon" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStatsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetStatsResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Stats" type="tns:ArrayOfStats" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatsSql">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Stats" type="tns:ArrayOfObjStats" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfObjStats">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ObjStats" type="tns:ObjStats" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ObjStats">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idStat" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iEvent" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_Login" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dTime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Duration" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Device" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Query" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStatsSqlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetStatsSqlResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ret_Stats" type="tns:ArrayOfObjStats" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Offer_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Req_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sendMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SubmitOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitOffer" />
+  </wsdl:message>
+  <wsdl:message name="SubmitOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOffer" />
+  </wsdl:message>
+  <wsdl:message name="GetOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitRequest" />
+  </wsdl:message>
+  <wsdl:message name="SubmitRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteRequest" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApplyForRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:ApplyForRequest" />
+  </wsdl:message>
+  <wsdl:message name="ApplyForRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:ApplyForRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnApplyForRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:UnApplyForRequest" />
+  </wsdl:message>
+  <wsdl:message name="UnApplyForRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:UnApplyForRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRequestStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRequestStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetRequestStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRequestStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRequestsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRequests" />
+  </wsdl:message>
+  <wsdl:message name="GetRequestsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRequestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRegionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRegions" />
+  </wsdl:message>
+  <wsdl:message name="GetRegionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRegionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRecommendationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRecommendations" />
+  </wsdl:message>
+  <wsdl:message name="GetRecommendationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRecommendationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="JoinActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:JoinActivity" />
+  </wsdl:message>
+  <wsdl:message name="JoinActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:JoinActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnJoinActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:UnJoinActivity" />
+  </wsdl:message>
+  <wsdl:message name="UnJoinActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:UnJoinActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModerateJoinActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:ModerateJoinActivity" />
+  </wsdl:message>
+  <wsdl:message name="ModerateJoinActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:ModerateJoinActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendFeedbackSoapIn">
+    <wsdl:part name="parameters" element="tns:SendFeedback" />
+  </wsdl:message>
+  <wsdl:message name="SendFeedbackSoapOut">
+    <wsdl:part name="parameters" element="tns:SendFeedbackResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendRecommendationSoapIn">
+    <wsdl:part name="parameters" element="tns:SendRecommendation" />
+  </wsdl:message>
+  <wsdl:message name="SendRecommendationSoapOut">
+    <wsdl:part name="parameters" element="tns:SendRecommendationResponse" />
+  </wsdl:message>
+  <wsdl:message name="PromoterFeedbackSoapIn">
+    <wsdl:part name="parameters" element="tns:PromoterFeedback" />
+  </wsdl:message>
+  <wsdl:message name="PromoterFeedbackSoapOut">
+    <wsdl:part name="parameters" element="tns:PromoterFeedbackResponse" />
+  </wsdl:message>
+  <wsdl:message name="AcceptRejectRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:AcceptRejectRequest" />
+  </wsdl:message>
+  <wsdl:message name="AcceptRejectRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:AcceptRejectRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSkillSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSkill" />
+  </wsdl:message>
+  <wsdl:message name="AddSkillSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSkillResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddInterestSoapIn">
+    <wsdl:part name="parameters" element="tns:AddInterest" />
+  </wsdl:message>
+  <wsdl:message name="AddInterestSoapOut">
+    <wsdl:part name="parameters" element="tns:AddInterestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetJoinsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetJoins" />
+  </wsdl:message>
+  <wsdl:message name="GetJoinsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetJoinsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSkillsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSkills" />
+  </wsdl:message>
+  <wsdl:message name="GetSkillsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSkillsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInterestsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInterests" />
+  </wsdl:message>
+  <wsdl:message name="GetInterestsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInterestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessagesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessages" />
+  </wsdl:message>
+  <wsdl:message name="GetMessagesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMessage" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSkillSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSkill" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSkillSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSkillResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInterestSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateInterest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInterestSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateInterestResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSkillSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteSkill" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSkillSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteSkillResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteMessage" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteInterestSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteInterest" />
+  </wsdl:message>
+  <wsdl:message name="DeleteInterestSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteInterestResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:AddCategory" />
+  </wsdl:message>
+  <wsdl:message name="AddCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:AddCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddActCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:AddActCategory" />
+  </wsdl:message>
+  <wsdl:message name="AddActCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:AddActCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddCompCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:AddCompCategory" />
+  </wsdl:message>
+  <wsdl:message name="AddCompCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:AddCompCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddRegionSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRegion" />
+  </wsdl:message>
+  <wsdl:message name="AddRegionSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddHubSoapIn">
+    <wsdl:part name="parameters" element="tns:AddHub" />
+  </wsdl:message>
+  <wsdl:message name="AddHubSoapOut">
+    <wsdl:part name="parameters" element="tns:AddHubResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddBusinessSoapIn">
+    <wsdl:part name="parameters" element="tns:AddBusiness" />
+  </wsdl:message>
+  <wsdl:message name="AddBusinessSoapOut">
+    <wsdl:part name="parameters" element="tns:AddBusinessResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHubSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHub" />
+  </wsdl:message>
+  <wsdl:message name="GetHubSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHubResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBusiness" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBusinessResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCategories" />
+  </wsdl:message>
+  <wsdl:message name="GetCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActCategories" />
+  </wsdl:message>
+  <wsdl:message name="GetActCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompCategories" />
+  </wsdl:message>
+  <wsdl:message name="GetCompCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCategory" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateActCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateActCategory" />
+  </wsdl:message>
+  <wsdl:message name="UpdateActCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateActCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCompCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCompCategory" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCompCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCompCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRegionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRegion" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRegionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRegionSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteRegion" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRegionSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteRegionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCategory" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteActCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteActCategory" />
+  </wsdl:message>
+  <wsdl:message name="DeleteActCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteActCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCompCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCompCategory" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCompCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCompCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecommendationSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteRecommendation" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRecommendationSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteRecommendationResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:AddActivity" />
+  </wsdl:message>
+  <wsdl:message name="AddActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:AddActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddMpOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:AddMpOffer" />
+  </wsdl:message>
+  <wsdl:message name="AddMpOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:AddMpOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActivitiesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActivities" />
+  </wsdl:message>
+  <wsdl:message name="GetActivitiesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActivitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMpOffersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMpOffers" />
+  </wsdl:message>
+  <wsdl:message name="GetMpOffersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMpOffersResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateHubSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateHub" />
+  </wsdl:message>
+  <wsdl:message name="UpdateHubSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateHubResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBusinessSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBusiness" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBusinessSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBusinessResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateActivity" />
+  </wsdl:message>
+  <wsdl:message name="UpdateActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMpOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMpOffer" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMpOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMpOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="viewOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:viewOffer" />
+  </wsdl:message>
+  <wsdl:message name="viewOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:viewOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateOffer" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHubSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteHub" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHubSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteHubResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBusinessSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteBusiness" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBusinessSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteBusinessResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteActivity" />
+  </wsdl:message>
+  <wsdl:message name="DeleteActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:AddService" />
+  </wsdl:message>
+  <wsdl:message name="AddServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:AddServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServicesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServices" />
+  </wsdl:message>
+  <wsdl:message name="GetServicesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateService" />
+  </wsdl:message>
+  <wsdl:message name="UpdateServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteService" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserOffersSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUserOffers" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserOffersSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUserOffersResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteOffer" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApplyForOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:ApplyForOffer" />
+  </wsdl:message>
+  <wsdl:message name="ApplyForOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:ApplyForOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnApplyForOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:UnApplyForOffer" />
+  </wsdl:message>
+  <wsdl:message name="UnApplyForOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:UnApplyForOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="AcceptRejectNewCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:AcceptRejectNewCategory" />
+  </wsdl:message>
+  <wsdl:message name="AcceptRejectNewCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:AcceptRejectNewCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddStatSoapIn">
+    <wsdl:part name="parameters" element="tns:AddStat" />
+  </wsdl:message>
+  <wsdl:message name="AddStatSoapOut">
+    <wsdl:part name="parameters" element="tns:AddStatResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStats" />
+  </wsdl:message>
+  <wsdl:message name="GetStatsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatsSqlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStatsSql" />
+  </wsdl:message>
+  <wsdl:message name="GetStatsSqlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatsSqlResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:sendMessage" />
+  </wsdl:message>
+  <wsdl:message name="sendMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:sendMessageResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ENGServiceSoap">
+    <wsdl:operation name="SubmitOffer">
+      <wsdl:input message="tns:SubmitOfferSoapIn" />
+      <wsdl:output message="tns:SubmitOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOffer">
+      <wsdl:input message="tns:GetOfferSoapIn" />
+      <wsdl:output message="tns:GetOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitRequest">
+      <wsdl:input message="tns:SubmitRequestSoapIn" />
+      <wsdl:output message="tns:SubmitRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRequest">
+      <wsdl:input message="tns:UpdateRequestSoapIn" />
+      <wsdl:output message="tns:UpdateRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRequest">
+      <wsdl:input message="tns:DeleteRequestSoapIn" />
+      <wsdl:output message="tns:DeleteRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplyForRequest">
+      <wsdl:input message="tns:ApplyForRequestSoapIn" />
+      <wsdl:output message="tns:ApplyForRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnApplyForRequest">
+      <wsdl:input message="tns:UnApplyForRequestSoapIn" />
+      <wsdl:output message="tns:UnApplyForRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequestStatus">
+      <wsdl:input message="tns:GetRequestStatusSoapIn" />
+      <wsdl:output message="tns:GetRequestStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequests">
+      <wsdl:input message="tns:GetRequestsSoapIn" />
+      <wsdl:output message="tns:GetRequestsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRegions">
+      <wsdl:input message="tns:GetRegionsSoapIn" />
+      <wsdl:output message="tns:GetRegionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecommendations">
+      <wsdl:input message="tns:GetRecommendationsSoapIn" />
+      <wsdl:output message="tns:GetRecommendationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinActivity">
+      <wsdl:input message="tns:JoinActivitySoapIn" />
+      <wsdl:output message="tns:JoinActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnJoinActivity">
+      <wsdl:input message="tns:UnJoinActivitySoapIn" />
+      <wsdl:output message="tns:UnJoinActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModerateJoinActivity">
+      <wsdl:input message="tns:ModerateJoinActivitySoapIn" />
+      <wsdl:output message="tns:ModerateJoinActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFeedback">
+      <wsdl:input message="tns:SendFeedbackSoapIn" />
+      <wsdl:output message="tns:SendFeedbackSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendRecommendation">
+      <wsdl:input message="tns:SendRecommendationSoapIn" />
+      <wsdl:output message="tns:SendRecommendationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PromoterFeedback">
+      <wsdl:input message="tns:PromoterFeedbackSoapIn" />
+      <wsdl:output message="tns:PromoterFeedbackSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptRejectRequest">
+      <wsdl:input message="tns:AcceptRejectRequestSoapIn" />
+      <wsdl:output message="tns:AcceptRejectRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSkill">
+      <wsdl:input message="tns:AddSkillSoapIn" />
+      <wsdl:output message="tns:AddSkillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddInterest">
+      <wsdl:input message="tns:AddInterestSoapIn" />
+      <wsdl:output message="tns:AddInterestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJoins">
+      <wsdl:input message="tns:GetJoinsSoapIn" />
+      <wsdl:output message="tns:GetJoinsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSkills">
+      <wsdl:input message="tns:GetSkillsSoapIn" />
+      <wsdl:output message="tns:GetSkillsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInterests">
+      <wsdl:input message="tns:GetInterestsSoapIn" />
+      <wsdl:output message="tns:GetInterestsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <wsdl:input message="tns:GetMessagesSoapIn" />
+      <wsdl:output message="tns:GetMessagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMessage">
+      <wsdl:input message="tns:UpdateMessageSoapIn" />
+      <wsdl:output message="tns:UpdateMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSkill">
+      <wsdl:input message="tns:UpdateSkillSoapIn" />
+      <wsdl:output message="tns:UpdateSkillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInterest">
+      <wsdl:input message="tns:UpdateInterestSoapIn" />
+      <wsdl:output message="tns:UpdateInterestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSkill">
+      <wsdl:input message="tns:DeleteSkillSoapIn" />
+      <wsdl:output message="tns:DeleteSkillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessage">
+      <wsdl:input message="tns:DeleteMessageSoapIn" />
+      <wsdl:output message="tns:DeleteMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInterest">
+      <wsdl:input message="tns:DeleteInterestSoapIn" />
+      <wsdl:output message="tns:DeleteInterestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCategory">
+      <wsdl:input message="tns:AddCategorySoapIn" />
+      <wsdl:output message="tns:AddCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddActCategory">
+      <wsdl:input message="tns:AddActCategorySoapIn" />
+      <wsdl:output message="tns:AddActCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCompCategory">
+      <wsdl:input message="tns:AddCompCategorySoapIn" />
+      <wsdl:output message="tns:AddCompCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRegion">
+      <wsdl:input message="tns:AddRegionSoapIn" />
+      <wsdl:output message="tns:AddRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddHub">
+      <wsdl:input message="tns:AddHubSoapIn" />
+      <wsdl:output message="tns:AddHubSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBusiness">
+      <wsdl:input message="tns:AddBusinessSoapIn" />
+      <wsdl:output message="tns:AddBusinessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHub">
+      <wsdl:input message="tns:GetHubSoapIn" />
+      <wsdl:output message="tns:GetHubSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusiness">
+      <wsdl:input message="tns:GetBusinessSoapIn" />
+      <wsdl:output message="tns:GetBusinessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <wsdl:input message="tns:GetCategoriesSoapIn" />
+      <wsdl:output message="tns:GetCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActCategories">
+      <wsdl:input message="tns:GetActCategoriesSoapIn" />
+      <wsdl:output message="tns:GetActCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompCategories">
+      <wsdl:input message="tns:GetCompCategoriesSoapIn" />
+      <wsdl:output message="tns:GetCompCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategory">
+      <wsdl:input message="tns:UpdateCategorySoapIn" />
+      <wsdl:output message="tns:UpdateCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateActCategory">
+      <wsdl:input message="tns:UpdateActCategorySoapIn" />
+      <wsdl:output message="tns:UpdateActCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompCategory">
+      <wsdl:input message="tns:UpdateCompCategorySoapIn" />
+      <wsdl:output message="tns:UpdateCompCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRegion">
+      <wsdl:input message="tns:UpdateRegionSoapIn" />
+      <wsdl:output message="tns:UpdateRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRegion">
+      <wsdl:input message="tns:DeleteRegionSoapIn" />
+      <wsdl:output message="tns:DeleteRegionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <wsdl:input message="tns:DeleteCategorySoapIn" />
+      <wsdl:output message="tns:DeleteCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActCategory">
+      <wsdl:input message="tns:DeleteActCategorySoapIn" />
+      <wsdl:output message="tns:DeleteActCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompCategory">
+      <wsdl:input message="tns:DeleteCompCategorySoapIn" />
+      <wsdl:output message="tns:DeleteCompCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecommendation">
+      <wsdl:input message="tns:DeleteRecommendationSoapIn" />
+      <wsdl:output message="tns:DeleteRecommendationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddActivity">
+      <wsdl:input message="tns:AddActivitySoapIn" />
+      <wsdl:output message="tns:AddActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMpOffer">
+      <wsdl:input message="tns:AddMpOfferSoapIn" />
+      <wsdl:output message="tns:AddMpOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivities">
+      <wsdl:input message="tns:GetActivitiesSoapIn" />
+      <wsdl:output message="tns:GetActivitiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMpOffers">
+      <wsdl:input message="tns:GetMpOffersSoapIn" />
+      <wsdl:output message="tns:GetMpOffersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHub">
+      <wsdl:input message="tns:UpdateHubSoapIn" />
+      <wsdl:output message="tns:UpdateHubSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBusiness">
+      <wsdl:input message="tns:UpdateBusinessSoapIn" />
+      <wsdl:output message="tns:UpdateBusinessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateActivity">
+      <wsdl:input message="tns:UpdateActivitySoapIn" />
+      <wsdl:output message="tns:UpdateActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMpOffer">
+      <wsdl:input message="tns:UpdateMpOfferSoapIn" />
+      <wsdl:output message="tns:UpdateMpOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="viewOffer">
+      <wsdl:input message="tns:viewOfferSoapIn" />
+      <wsdl:output message="tns:viewOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOffer">
+      <wsdl:input message="tns:UpdateOfferSoapIn" />
+      <wsdl:output message="tns:UpdateOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHub">
+      <wsdl:input message="tns:DeleteHubSoapIn" />
+      <wsdl:output message="tns:DeleteHubSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBusiness">
+      <wsdl:input message="tns:DeleteBusinessSoapIn" />
+      <wsdl:output message="tns:DeleteBusinessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActivity">
+      <wsdl:input message="tns:DeleteActivitySoapIn" />
+      <wsdl:output message="tns:DeleteActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddService">
+      <wsdl:input message="tns:AddServiceSoapIn" />
+      <wsdl:output message="tns:AddServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <wsdl:input message="tns:GetServicesSoapIn" />
+      <wsdl:output message="tns:GetServicesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateService">
+      <wsdl:input message="tns:UpdateServiceSoapIn" />
+      <wsdl:output message="tns:UpdateServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteService">
+      <wsdl:input message="tns:DeleteServiceSoapIn" />
+      <wsdl:output message="tns:DeleteServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserOffers">
+      <wsdl:input message="tns:DeleteUserOffersSoapIn" />
+      <wsdl:output message="tns:DeleteUserOffersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOffer">
+      <wsdl:input message="tns:DeleteOfferSoapIn" />
+      <wsdl:output message="tns:DeleteOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplyForOffer">
+      <wsdl:input message="tns:ApplyForOfferSoapIn" />
+      <wsdl:output message="tns:ApplyForOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnApplyForOffer">
+      <wsdl:input message="tns:UnApplyForOfferSoapIn" />
+      <wsdl:output message="tns:UnApplyForOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptRejectNewCategory">
+      <wsdl:input message="tns:AcceptRejectNewCategorySoapIn" />
+      <wsdl:output message="tns:AcceptRejectNewCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStat">
+      <wsdl:input message="tns:AddStatSoapIn" />
+      <wsdl:output message="tns:AddStatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStats">
+      <wsdl:input message="tns:GetStatsSoapIn" />
+      <wsdl:output message="tns:GetStatsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatsSql">
+      <wsdl:input message="tns:GetStatsSqlSoapIn" />
+      <wsdl:output message="tns:GetStatsSqlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendMessage">
+      <wsdl:input message="tns:sendMessageSoapIn" />
+      <wsdl:output message="tns:sendMessageSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ENGServiceSoap" type="tns:ENGServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitOffer">
+      <soap:operation soapAction="http://Life_2_0_Engine/SubmitOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOffer">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitRequest">
+      <soap:operation soapAction="http://Life_2_0_Engine/SubmitRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRequest">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRequest">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyForRequest">
+      <soap:operation soapAction="http://Life_2_0_Engine/ApplyForRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnApplyForRequest">
+      <soap:operation soapAction="http://Life_2_0_Engine/UnApplyForRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequestStatus">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetRequestStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequests">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetRequests" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRegions">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetRegions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecommendations">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetRecommendations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JoinActivity">
+      <soap:operation soapAction="http://Life_2_0_Engine/JoinActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnJoinActivity">
+      <soap:operation soapAction="http://Life_2_0_Engine/UnJoinActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModerateJoinActivity">
+      <soap:operation soapAction="http://Life_2_0_Engine/ModerateJoinActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFeedback">
+      <soap:operation soapAction="http://Life_2_0_Engine/SendFeedback" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendRecommendation">
+      <soap:operation soapAction="http://Life_2_0_Engine/SendRecommendation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PromoterFeedback">
+      <soap:operation soapAction="http://Life_2_0_Engine/PromoterFeedback" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptRejectRequest">
+      <soap:operation soapAction="http://Life_2_0_Engine/AcceptRejectRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSkill">
+      <soap:operation soapAction="http://Life_2_0_Engine/AddSkill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInterest">
+      <soap:operation soapAction="http://Life_2_0_Engine/AddInterest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJoins">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetJoins" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSkills">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetSkills" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInterests">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetInterests" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMessage">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSkill">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateSkill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInterest">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateInterest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSkill">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteSkill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessage">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInterest">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteInterest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCategory">
+      <soap:operation soapAction="http://Life_2_0_Engine/AddCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddActCategory">
+      <soap:operation soapAction="http://Life_2_0_Engine/AddActCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCompCategory">
+      <soap:operation soapAction="http://Life_2_0_Engine/AddCompCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRegion">
+      <soap:operation soapAction="http://Life_2_0_Engine/AddRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddHub">
+      <soap:operation soapAction="http://Life_2_0_Engine/AddHub" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBusiness">
+      <soap:operation soapAction="http://Life_2_0_Engine/AddBusiness" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHub">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetHub" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusiness">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetBusiness" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActCategories">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetActCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompCategories">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetCompCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategory">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateActCategory">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateActCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompCategory">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateCompCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRegion">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRegion">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteRegion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActCategory">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteActCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompCategory">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteCompCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecommendation">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteRecommendation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddActivity">
+      <soap:operation soapAction="http://Life_2_0_Engine/AddActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMpOffer">
+      <soap:operation soapAction="http://Life_2_0_Engine/AddMpOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivities">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetActivities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMpOffers">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetMpOffers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHub">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateHub" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBusiness">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateBusiness" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateActivity">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMpOffer">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateMpOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewOffer">
+      <soap:operation soapAction="http://Life_2_0_Engine/viewOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOffer">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHub">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteHub" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBusiness">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteBusiness" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActivity">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddService">
+      <soap:operation soapAction="http://Life_2_0_Engine/AddService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateService">
+      <soap:operation soapAction="http://Life_2_0_Engine/UpdateService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteService">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserOffers">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteUserOffers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOffer">
+      <soap:operation soapAction="http://Life_2_0_Engine/DeleteOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyForOffer">
+      <soap:operation soapAction="http://Life_2_0_Engine/ApplyForOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnApplyForOffer">
+      <soap:operation soapAction="http://Life_2_0_Engine/UnApplyForOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptRejectNewCategory">
+      <soap:operation soapAction="http://Life_2_0_Engine/AcceptRejectNewCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStat">
+      <soap:operation soapAction="http://Life_2_0_Engine/AddStat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStats">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetStats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatsSql">
+      <soap:operation soapAction="http://Life_2_0_Engine/GetStatsSql" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendMessage">
+      <soap:operation soapAction="http://Life_2_0_Engine/sendMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ENGServiceSoap12" type="tns:ENGServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitOffer">
+      <soap12:operation soapAction="http://Life_2_0_Engine/SubmitOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOffer">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitRequest">
+      <soap12:operation soapAction="http://Life_2_0_Engine/SubmitRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRequest">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRequest">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyForRequest">
+      <soap12:operation soapAction="http://Life_2_0_Engine/ApplyForRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnApplyForRequest">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UnApplyForRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequestStatus">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetRequestStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequests">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetRequests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRegions">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetRegions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecommendations">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetRecommendations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JoinActivity">
+      <soap12:operation soapAction="http://Life_2_0_Engine/JoinActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnJoinActivity">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UnJoinActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModerateJoinActivity">
+      <soap12:operation soapAction="http://Life_2_0_Engine/ModerateJoinActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFeedback">
+      <soap12:operation soapAction="http://Life_2_0_Engine/SendFeedback" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendRecommendation">
+      <soap12:operation soapAction="http://Life_2_0_Engine/SendRecommendation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PromoterFeedback">
+      <soap12:operation soapAction="http://Life_2_0_Engine/PromoterFeedback" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptRejectRequest">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AcceptRejectRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSkill">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AddSkill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInterest">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AddInterest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJoins">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetJoins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSkills">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetSkills" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInterests">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetInterests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetMessages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMessage">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSkill">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateSkill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInterest">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateInterest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSkill">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteSkill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessage">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInterest">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteInterest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCategory">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AddCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddActCategory">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AddActCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCompCategory">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AddCompCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRegion">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AddRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddHub">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AddHub" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBusiness">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AddBusiness" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHub">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetHub" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusiness">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetBusiness" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActCategories">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetActCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompCategories">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetCompCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategory">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateActCategory">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateActCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompCategory">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateCompCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRegion">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRegion">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteRegion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActCategory">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteActCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompCategory">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteCompCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRecommendation">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteRecommendation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddActivity">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AddActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMpOffer">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AddMpOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivities">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetActivities" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMpOffers">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetMpOffers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHub">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateHub" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBusiness">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateBusiness" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateActivity">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMpOffer">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateMpOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewOffer">
+      <soap12:operation soapAction="http://Life_2_0_Engine/viewOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOffer">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHub">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteHub" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBusiness">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteBusiness" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActivity">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddService">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AddService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetServices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateService">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UpdateService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteService">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserOffers">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteUserOffers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOffer">
+      <soap12:operation soapAction="http://Life_2_0_Engine/DeleteOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyForOffer">
+      <soap12:operation soapAction="http://Life_2_0_Engine/ApplyForOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnApplyForOffer">
+      <soap12:operation soapAction="http://Life_2_0_Engine/UnApplyForOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptRejectNewCategory">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AcceptRejectNewCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStat">
+      <soap12:operation soapAction="http://Life_2_0_Engine/AddStat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStats">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetStats" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatsSql">
+      <soap12:operation soapAction="http://Life_2_0_Engine/GetStatsSql" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendMessage">
+      <soap12:operation soapAction="http://Life_2_0_Engine/sendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ENGService">
+    <wsdl:port name="ENGServiceSoap" binding="tns:ENGServiceSoap">
+      <soap:address location="http://localhost:1248/Engine/ENGService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ENGServiceSoap12" binding="tns:ENGServiceSoap12">
+      <soap12:address location="http://localhost:1248/Engine/ENGService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

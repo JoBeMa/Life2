@@ -1,0 +1,16 @@
+LIFE20: Uuden k&auml;ytt&auml;j&auml;n rekisteröinti
+
+K&auml;ytt&auml;j&auml;tunnus: {#UserLogin#}
+
+
+K&auml;ytt&auml;j&auml;n nimi: {#UserName#}
+
+K&auml;ytt&auml;j&auml;n ID: {#UserId#}
+
+K&auml;ytt&auml;j&auml;n rooli: {#UserRole#}
+
+K&auml;ytt&auml;j&auml;n s&auml;hköpostiosoite: {#Email#}
+
+--
+T&auml;m&auml; viesti on luotu automaattisesti LIFE 2.0 -palvelussa.
+Jos viestin ei pit&auml;isi tulla sinulle, otathan yhteytt&auml; LIFE 2.0 yll&auml;pit&auml;jiin.

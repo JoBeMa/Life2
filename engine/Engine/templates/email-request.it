@@ -1,0 +1,15 @@
+LIFE20: Un utente ha inviato una richiesta
+
+Nome utente: {#UserName#}
+
+Identità utente: {#UserId#}
+
+Identità richiesta: {#IdItem#}
+
+Richiesta: {#ShortDesc#}
+
+Descrizione: {#LongDesc#}
+
+--
+Questo messaggio è generato automaticamente da LIFE20.
+Se pensa che sia stato inviato erroneamente, perfavore contatti l'amministratore locale di LIFE20.
